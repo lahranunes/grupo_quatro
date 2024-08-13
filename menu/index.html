@@ -1,35 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu de produtos</title>
     <style>
-        .bloco {
-            background-color: #fff;
-            width: 50%;
-            height: 50%;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #000;
+        #container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
         }
-    </style>
-</head>
-<body>
-    <div id="container" style="display: flex; flex-direction: column; align-items: center;"></div>
-
-    <script>
-        const container = document.getElementById('container');
+    
+        .bloco {
+          background-color: #fff;
+          width: 25%;
+          margin: 20px;
+          padding: 10px;
+          font-family: Arial, Helvetica, sans-serif;
+          box-shadow: 2px 3px 24px -5px rgba(0,0,0,0.38);
+          -webkit-box-shadow: 2px 3px 24px -5px rgba(0,0,0,0.38);
+           -moz-box-shadow: 2px 3px 24px -5px rgba(0,0,0,0.38);
+           border-radius: 15px;
+        }
+    
+        .preco{
+            font-size: 25px;
+        }
+        @media (max-width: 768px) {
+          #container {
+            flex-direction: column;
+            align-items: center;
+          }
+    
+          .bloco {
+            width: 90%;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div id="container"></div>
+    
+      <script>
+        const container = document.getElementById("container");
         Array.from({ length: 6 }).map((_, i) => {
-            const bloco = document.createElement('div');
-            bloco.className = 'bloco';
-            bloco.innerHTML = `
-                <h2>Título ${i + 1}</h2>
-                <p>Este é o parágrafo ${i + 1} do bloco.</p>
-                <p>Mais conteúdo pode ser adicionado aqui.</p>
-            `;
-            container.appendChild(bloco);
+          const bloco = document.createElement("div");
+          bloco.className = "bloco";
+          bloco.innerHTML = `
+            <h2>Comanda ${i + 1}</h2>
+            <p>Informações do pedido ${i + 1}.</p>
+            <p>Continuação dos pedidos.</p>
+            <img src='sorvetin.jfif' alt='sorvetinho' width='80%'>
+            <p class='preco'>R$ ${i+ 1}, ${i}</p>
+          `;
+          container.appendChild(bloco);
         });
-    </script>
-</body>
+      </script>
+    </body>
+  </body>
 </html>
