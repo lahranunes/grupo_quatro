@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu de produtos</title>
+    <style>
+        .bloco {
+            background-color: #fff;
+            width: 50%;
+            height: 50%;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="container" style="display: flex; flex-direction: column; align-items: center;"></div>
+
+    <script>
+        const container = document.getElementById('container');
+        Array.from({ length: 6 }).map((_, i) => {
+            const bloco = document.createElement('div');
+            bloco.className = 'bloco';
+            bloco.innerHTML = `
+                <h2>Título ${i + 1}</h2>
+                <p>Este é o parágrafo ${i + 1} do bloco.</p>
+                <p>Mais conteúdo pode ser adicionado aqui.</p>
+            `;
+            container.appendChild(bloco);
+        });
+    </script>
 </body>
 </html>
