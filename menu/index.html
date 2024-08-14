@@ -6,6 +6,7 @@
     <title>Menu de produtos</title>
     <style>
         #container {
+          margin: 120px 0px 0px 100px;
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
@@ -19,8 +20,8 @@
           font-family: Arial, Helvetica, sans-serif;
           box-shadow: 2px 3px 24px -5px rgba(0,0,0,0.38);
           -webkit-box-shadow: 2px 3px 24px -5px rgba(0,0,0,0.38);
-           -moz-box-shadow: 2px 3px 24px -5px rgba(0,0,0,0.38);
-           border-radius: 15px;
+          -moz-box-shadow: 2px 3px 24px -5px rgba(0,0,0,0.38);
+          border-radius: 15px;
         }
     
         .preco{
@@ -40,7 +41,7 @@
     </head>
     <body>
       <div id="container"></div>
-    
+      
       <script>
         const container = document.getElementById("container");
         Array.from({ length: 6 }).map((_, i) => {
