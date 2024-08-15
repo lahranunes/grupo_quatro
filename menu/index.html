@@ -11,6 +11,8 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      transition: margin-left 0.3s
+      
     }
 
     .bloco {
@@ -39,12 +41,14 @@
       color: white;
       padding-top: 70px;
       transition: 0.3s;
-      transform: translateX(-250px)
+      transform: translateX(-250px);
         /*Menu escondido por padrão*/
     }
 
     #menu.active {
       transform: translateX(0);
+      z-index: 2;
+      
       /* Mostra o menu */
     }
 
@@ -61,6 +65,8 @@
       color: black;
     }
 
+   
+
     #burger {
       position: fixed;
       top: 20px;
@@ -75,6 +81,15 @@
       color: white;
     }
 
+
+
+    @media(max-width: 1700px){
+
+
+      #menu.active + #container {
+    margin-left: 200px; /* Empurra o container para a direita */
+  }
+    }
     @media (max-width: 768px) {
       #container {
         flex-direction: column;
@@ -84,6 +99,8 @@
       .bloco {
         width: 90%;
       }
+
+   
     }
   </style>
 </head>
@@ -110,11 +127,11 @@
       const bloco = document.createElement("div");
       bloco.className = "bloco";
       bloco.innerHTML = `
-            <h2>Comanda ${i + 1}</h2>
-            <p>Informações do pedido ${i + 1}.</p>
+            <h2>Comanda ${i++}</h2>
+            <p>Informações do pedido ${i++}.</p>
             <p>Continuação dos pedidos.</p>
             <img src='sorvetin.jfif' alt='sorvetinho' width='80%'>
-            <p class='preco'>R$ ${i + 1}, ${i}</p>
+            <p class='preco'>R$ ${i++}, ${i}</p>
           `;
       container.appendChild(bloco);
     });
