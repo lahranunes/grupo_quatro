@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Menu de produtos</title>
   <style>
-
-   
+    
     #container {
       margin: 90px 0px 0px 50px;
       display: flex;
@@ -16,7 +15,7 @@
       transition: margin-left 0.3s
       
     }
-
+/* realssar as comandas, definir bordas e etc */
     .bloco {
       background-color: #fff;
       width: 25%;
@@ -28,11 +27,12 @@
       -moz-box-shadow: 2px 3px 24px -5px rgba(0, 0, 0, 0.38);
       border-radius: 15px;
     }
-
+    /* Alterando a fonte do preço */
     .preco {
       font-size: 25px;
     }
 
+    /*Menu escondido por padrão*/
     #menu {
       position: fixed;
       top: 0;
@@ -43,15 +43,13 @@
       color: white;
       padding-top: 70px;
       transition: 0.3s;
-      transform: translateX(-250px);
-        /*Menu escondido por padrão*/
+      transform: translateX(-250px)
+        
     }
-
+    /* Mostra o menu */
     #menu.active {
       transform: translateX(0);
-      z-index: 2;
       
-      /* Mostra o menu */
     }
     .sorvetinho{
     background-repeat: no-repeat;      
@@ -64,6 +62,7 @@
 background-color: pink;
     }
 
+    /* definição do menu */
     #menu a {
       padding: 15px 10px 15px 20px;
       text-decoration: none;
@@ -71,14 +70,12 @@ background-color: pink;
       display: block;
       transition: 0.2s;
     }
-
+/* A funcionalidade hover excerce o poder de mudar  a cor dos itens do menu */
     #menu a:hover {
       background-color: pink;
       color: black;
     }
-
-   
-
+    /* definição do menu hamburguer */
     #burger {
       position: fixed;
       top: 20px;
@@ -88,28 +85,18 @@ background-color: pink;
       z-index: 1000;
       transition: 0.3s;
     }
-
+/* definindo a cor do menu */
     #burger.white {
       color: white;
     }
-
-
-
-    @media(max-width: 1700px){
-
-
-    #menu.active + #container {
-    margin-left: 150px; /* Empurra o container para a direita */
-    }
-
-    }
+/* definir responsividade */
     @media (max-width: 768px) {
       #container {
         flex-direction: column;
         align-items: center;
         margin: 0;
       }
-
+/* Definir a posição das comandas */
       .bloco {
         width: 90%;
       }
@@ -119,6 +106,7 @@ background-color: pink;
   </style>
 </head>
 
+ <!-- populando o menu hamburguer -->
 <body>
   <div id="burger">&#9776;</div>
   <div id="menu">
