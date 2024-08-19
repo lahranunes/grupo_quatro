@@ -6,16 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Menu de produtos</title>
   <style>
-    
     #container {
       margin: 90px 0px 0px 50px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       transition: margin-left 0.3s
-      
     }
-/* realssar as comandas, definir bordas e etc */
+
+    /* realssar as comandas, definir bordas e etc */
     .bloco {
       background-color: #fff;
       width: 25%;
@@ -27,6 +26,7 @@
       -moz-box-shadow: 2px 3px 24px -5px rgba(0, 0, 0, 0.38);
       border-radius: 15px;
     }
+
     /* Alterando a fonte do preço */
     .preco {
       font-size: 25px;
@@ -44,22 +44,25 @@
       padding-top: 70px;
       transition: 0.3s;
       transform: translateX(-250px)
-        
+    }
+    .div-sorvete{
+    /* background-color: pink; */
+    display: flex;
+    justify-content: space-around;
     }
     /* Mostra o menu */
     #menu.active {
       transform: translateX(0);
-      
-    }
-    .sorvetinho{
-    background-repeat: no-repeat;      
-    background-size: cover;    
     }
 
-    .bloco .sorvetinho{
+    .sorvetinho {
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
-    display: flex;
-background-color: pink;
+    .bloco .sorvetinho {
+      display: flex;
+      background-color: pink;
     }
 
     /* definição do menu */
@@ -70,11 +73,13 @@ background-color: pink;
       display: block;
       transition: 0.2s;
     }
-/* A funcionalidade hover excerce o poder de mudar  a cor dos itens do menu */
+
+    /* A funcionalidade hover excerce o poder de mudar  a cor dos itens do menu */
     #menu a:hover {
       background-color: pink;
       color: black;
     }
+
     /* definição do menu hamburguer */
     #burger {
       position: fixed;
@@ -85,28 +90,31 @@ background-color: pink;
       z-index: 1000;
       transition: 0.3s;
     }
-/* definindo a cor do menu */
+
+    /* definindo a cor do menu */
     #burger.white {
       color: white;
     }
-/* definir responsividade */
+
+    /* definir responsividade */
     @media (max-width: 768px) {
       #container {
         flex-direction: column;
         align-items: center;
         margin: 0;
       }
-/* Definir a posição das comandas */
+
+      /* Definir a posição das comandas */
       .bloco {
         width: 90%;
       }
 
-   
     }
   </style>
 </head>
 
- <!-- populando o menu hamburguer -->
+<!-- populando o menu hamburguer -->
+
 <body>
   <div id="burger">&#9776;</div>
   <div id="menu">
@@ -132,11 +140,27 @@ background-color: pink;
             <h2>Comanda ${i++}</h2>
             <p>Informações do pedido ${i++}.</p>
             <p>Continuação dos pedidos.</p>
-            <img src='https://polosulsc.com.br/wp-content/webp-express/webp-images/uploads/2018/03/Tr%C3%AAs-tipos-e-sabores-de-sorvete-diferentes-1.jpg.webp' alt='sorvetinho' width='80%' class="sorvetinho">
+            <div class='div-sorvete'>
+              <img id='imagem${i}' src='https://polosulsc.com.br/wp-content/webp-express/webp-images/uploads/2018/03/Tr%C3%AAs-tipos-e-sabores-de-sorvete-diferentes-1.jpg.webp' alt='sorvetinho' width='80%' class="sorvetinho">
+            </div>
             <p class='preco'>R$ ${i++}, ${i}</p>
           `;
       container.appendChild(bloco);
     });
+
+    function changeImage() {
+      const images = document.querySelectorAll('.sorvetinho');
+      images.forEach(image => {
+        if (window.innerWidth <= 768) { // Tamanho típico de celular
+          image.src = 'esquilinho.png';
+        } else {
+          image.src = 'https://polosulsc.com.br/wp-content/webp-express/webp-images/uploads/2018/03/Tr%C3%AAs-tipos-e-sabores-de-sorvete-diferentes-1.jpg.webp';
+        }
+      });
+    }
+
+    window.addEventListener('resize', changeImage);
+    window.addEventListener('load', changeImage);
   </script>
 </body>
 </body>
