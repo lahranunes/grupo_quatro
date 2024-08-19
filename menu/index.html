@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Menu de produtos</title>
   <style>
+
+   
     #container {
-      margin: 120px 0px 0px 100px;
+      margin: 90px 0px 0px 50px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -19,7 +21,7 @@
       background-color: #fff;
       width: 25%;
       margin: 20px;
-      padding: 10px;
+      padding: 15px;
       font-family: Arial, Helvetica, sans-serif;
       box-shadow: 2px 3px 24px -5px rgba(0, 0, 0, 0.38);
       -webkit-box-shadow: 2px 3px 24px -5px rgba(0, 0, 0, 0.38);
@@ -50,6 +52,16 @@
       z-index: 2;
       
       /* Mostra o menu */
+    }
+    .sorvetinho{
+    background-repeat: no-repeat;      
+    background-size: cover;    
+    }
+
+    .bloco .sorvetinho{
+
+    display: flex;
+background-color: pink;
     }
 
     #menu a {
@@ -86,14 +98,16 @@
     @media(max-width: 1700px){
 
 
-      #menu.active + #container {
-    margin-left: 200px; /* Empurra o container para a direita */
-  }
+    #menu.active + #container {
+    margin-left: 150px; /* Empurra o container para a direita */
+    }
+
     }
     @media (max-width: 768px) {
       #container {
         flex-direction: column;
         align-items: center;
+        margin: 0;
       }
 
       .bloco {
@@ -130,7 +144,7 @@
             <h2>Comanda ${i++}</h2>
             <p>Informações do pedido ${i++}.</p>
             <p>Continuação dos pedidos.</p>
-            <img src='sorvetin.jfif' alt='sorvetinho' width='80%'>
+            <img src='https://polosulsc.com.br/wp-content/webp-express/webp-images/uploads/2018/03/Tr%C3%AAs-tipos-e-sabores-de-sorvete-diferentes-1.jpg.webp' alt='sorvetinho' width='80%' class="sorvetinho">
             <p class='preco'>R$ ${i++}, ${i}</p>
           `;
       container.appendChild(bloco);
