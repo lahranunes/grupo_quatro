@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Menu de produtos</title>
   <style>
+    
     #container {
       margin: 120px 0px 0px 100px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
     }
-
+/* realssar as comandas, definir bordas e etc */
     .bloco {
       background-color: #fff;
       width: 25%;
@@ -24,11 +25,12 @@
       -moz-box-shadow: 2px 3px 24px -5px rgba(0, 0, 0, 0.38);
       border-radius: 15px;
     }
-
+    /* Alterando a fonte do preço */
     .preco {
       font-size: 25px;
     }
 
+    /*Menu escondido por padrão*/
     #menu {
       position: fixed;
       top: 0;
@@ -40,14 +42,15 @@
       padding-top: 70px;
       transition: 0.3s;
       transform: translateX(-250px)
-        /*Menu escondido por padrão*/
+        
     }
-
+    /* Mostra o menu */
     #menu.active {
       transform: translateX(0);
-      /* Mostra o menu */
+      
     }
 
+    /* definição do menu */
     #menu a {
       padding: 15px 10px 15px 20px;
       text-decoration: none;
@@ -55,12 +58,12 @@
       display: block;
       transition: 0.2s;
     }
-
+/* A funcionalidade hover excerce o poder de mudar  a cor dos itens do menu */
     #menu a:hover {
       background-color: pink;
       color: black;
     }
-
+    /* definição do menu hamburguer */
     #burger {
       position: fixed;
       top: 20px;
@@ -70,17 +73,17 @@
       z-index: 1000;
       transition: 0.3s;
     }
-
+/* definindo a cor do menu */
     #burger.white {
       color: white;
     }
-
+/* definir responsividade */
     @media (max-width: 768px) {
       #container {
         flex-direction: column;
         align-items: center;
       }
-
+/* Definir a posição das comandas */
       .bloco {
         width: 90%;
       }
@@ -88,6 +91,7 @@
   </style>
 </head>
 
+ <!-- populando o menu hamburguer -->
 <body>
   <div id="burger">&#9776;</div>
   <div id="menu">
