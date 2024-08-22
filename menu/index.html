@@ -1,61 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu de produtos</title>
-    <style>
-        #container {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-    
-        .bloco {
-          background-color: #fff;
-          width: 25%;
-          margin: 20px;
-          padding: 10px;
-          font-family: Arial, Helvetica, sans-serif;
-          box-shadow: 2px 3px 24px -5px rgba(0,0,0,0.38);
-          -webkit-box-shadow: 2px 3px 24px -5px rgba(0,0,0,0.38);
-           -moz-box-shadow: 2px 3px 24px -5px rgba(0,0,0,0.38);
-           border-radius: 15px;
-        }
-    
-        .preco{
-            font-size: 25px;
-        }
-        @media (max-width: 768px) {
-          #container {
-            flex-direction: column;
-            align-items: center;
-          }
-    
-          .bloco {
-            width: 90%;
-          }
-        }
-      </style>
-    </head>
-    <body>
-      <div id="container"></div>
-    
-      <script>
-        const container = document.getElementById("container");
-        Array.from({ length: 6 }).map((_, i) => {
-          const bloco = document.createElement("div");
-          bloco.className = "bloco";
-          bloco.innerHTML = `
-            <h2>Comanda ${i + 1}</h2>
-            <p>Informações do pedido ${i + 1}.</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu de produtos</title>
+  <style>
+    #container {
+      margin: 90px 0px 0px 50px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      transition: margin-left 0.3s
+    }
+
+    /* realssar as comandas, definir bordas e etc */
+    .bloco {
+      background-color: #fff;
+      width: 25%;
+      margin: 20px;
+      padding: 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      box-shadow: 2px 3px 24px -5px rgba(0, 0, 0, 0.38);
+      -webkit-box-shadow: 2px 3px 24px -5px rgba(0, 0, 0, 0.38);
+      -moz-box-shadow: 2px 3px 24px -5px rgba(0, 0, 0, 0.38);
+      border-radius: 15px;
+    }
+
+    /* Alterando a fonte do preço */
+    .preco {
+      font-size: 25px;
+    }
+
+    /*Menu escondido por padrão*/
+    #menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 200px;
+      background-color: #333;
+      color: white;
+      padding-top: 70px;
+      transition: 0.3s;
+      transform: translateX(-250px)
+    }
+    .div-sorvete{
+    /* background-color: pink; */
+    display: flex;
+    justify-content: space-around;
+    }
+    /* Mostra o menu */
+    #menu.active {
+      transform: translateX(0);
+    }
+
+    .sorvetinho {
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .bloco .sorvetinho {
+      display: flex;
+      background-color: pink;
+    }
+
+    /* definição do menu */
+    #menu a {
+      padding: 15px 10px 15px 20px;
+      text-decoration: none;
+      color: white;
+      display: block;
+      transition: 0.2s;
+    }
+
+    /* A funcionalidade hover excerce o poder de mudar  a cor dos itens do menu */
+    #menu a:hover {
+      background-color: pink;
+      color: black;
+    }
+
+    /* definição do menu hamburguer */
+    #burger {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: 0.3s;
+    }
+
+    /* definindo a cor do menu */
+    #burger.white {
+      color: white;
+    }
+
+    /* definir responsividade */
+    @media (max-width: 768px) {
+      #container {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+      }
+
+      /* Definir a posição das comandas */
+      .bloco {
+        width: 90%;
+      }
+
+    }
+  </style>
+</head>
+
+<!-- populando o menu hamburguer -->
+
+<body style="font-family: Arial, Helvetica, sans-serif;">
+  <div id="burger">&#9776;</div>
+  <div id="menu">
+    <a href="#">Início</a>
+    <a href="#">Pedidos</a>
+    <a href="#">Clientes</a>
+    <a href="#">Configurações</a>
+    <a href="#">Sair</a>
+  </div>
+  <div id="container"></div>
+  <script>
+    const container = document.getElementById("container");
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      burger.classList.toggle('white');
+    });
+    Array.from({ length: 6 }).map((_, i) => {
+      const bloco = document.createElement("div");
+      bloco.className = "bloco";
+      bloco.innerHTML = `
+            <h2>Comanda ${i++}</h2>
+            <p>Informações do pedido ${i++}.</p>
             <p>Continuação dos pedidos.</p>
-            <img src='sorvetin.jfif' alt='sorvetinho' width='80%'>
-            <p class='preco'>R$ ${i+ 1}, ${i}</p>
+            <div class='div-sorvete'>
+              <img id='imagem${i}' src='https://polosulsc.com.br/wp-content/webp-express/webp-images/uploads/2018/03/Tr%C3%AAs-tipos-e-sabores-de-sorvete-diferentes-1.jpg.webp' alt='sorvetinho' width='80%' class="sorvetinho">
+            </div>
+            <p class='preco'>R$ ${i++}, ${i}</p>
           `;
-          container.appendChild(bloco);
-        });
-      </script>
-    </body>
-  </body>
+      container.appendChild(bloco);
+    });
+
+    function changeImage() {
+      const images = document.querySelectorAll('.sorvetinho');
+      images.forEach(image => {
+        if (window.innerWidth <= 768) { // Tamanho típico de celular
+          image.src = 'esquilinho.png';
+        } else {
+          image.src = 'https://polosulsc.com.br/wp-content/webp-express/webp-images/uploads/2018/03/Tr%C3%AAs-tipos-e-sabores-de-sorvete-diferentes-1.jpg.webp';
+        }
+      });
+    }
+
+    window.addEventListener('resize', changeImage);
+    window.addEventListener('load', changeImage);
+  </script>
+</body>
+</body>
+
 </html>
