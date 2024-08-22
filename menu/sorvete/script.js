@@ -32,6 +32,7 @@ function addToCart(item) {
   }
   renderCart(); // Atualiza a exibição do carrinho
 }
+//teste
 
 // Função que renderiza os itens do carrinho na sidebar
 function renderCart() {
